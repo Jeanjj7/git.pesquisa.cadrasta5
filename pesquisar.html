@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div id="imagem1"><img src="pref_sp.png"></div>
+    <div id="imagem2"><img src="portal.png"></div>
+    <h1>Rastreio de Encomenda</h1>
+    <div id="painelRastreio">
+        <input type="text" id="codigo_produto" placeholder="Número da Encomenda"> <br>
+        <button id="bntPesquisar">Pesquisa</button>
+    </div>
+        <div id="resultado2"></div>
+    <div id="carregando">
+        <img src="loading.gif"> <br>
+        Carregando...
+    </div>
+
+
+    <script>
+
+    $("#bntPesquisar").click(function () {
+        $("#carregando").show();
+        var codigo_capturado = $("#codigo_produto").val();
+
+
+
+        $.ajax({
+            url: "consultar.php",  
+            method: "POST",  
+            data: {cod: codigo_capturado}, 
+            success: function (resultado) {
+                $("#resultado2").html(resultado);
+                $("#carregando").hide();
+            },
+            error: function() {
+                $("#carregando").hide();
+                alert("Erro ao consultar o código");
+            }
+        });
+    });
+    $(document).ready(function(){
+            $("#carregando").hide();
+            $("#resultado").hide();
+        });
+
+    </script>
+</body>
+</html>
