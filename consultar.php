@@ -32,7 +32,7 @@ try {
 
             echo "
                 <div class='atualizacao'>
-           
+                <br>
                     <span class='num_protocolo'><b>Protocolo:</b> $num_protocolo</span><br><br>
                     <span class='data_hora'><b>Data e Hora:</b> $somente_data às $somente_hora</span><br><br>
                     <span class='nome_completo'><b>Nome:</b> $nome_completo</span><br><br>
